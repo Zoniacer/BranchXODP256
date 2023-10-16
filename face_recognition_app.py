@@ -10,6 +10,7 @@ face_names = []
 known_face_encodings = []
 known_face_names = []
 process_this_frame = True
+return_name='Unknown'
 
 for image in os.listdir('faces'):
     face_image = face_recognition.load_image_file(f'faces/{image}')
@@ -20,7 +21,7 @@ for image in os.listdir('faces'):
 print(known_face_names)
 
 def process_frame(frame):
-    global process_this_frame, known_face_encodings, known_face_names,face_names
+    global process_this_frame, known_face_encodings, known_face_names,face_names,return_name
 
     # Only process every other frame of video to save time
     if process_this_frame:
@@ -51,10 +52,11 @@ def process_frame(frame):
     process_this_frame = not process_this_frame
 
     # Display the results
-    for name in  face_names:
+    for name in face_names:
         # Scale back up face locations since the frame we detected in was scaled to 1/4 size
         cv2.rectangle(frame, (230, 420), (420, 370), (255, 255, 255), cv2.FILLED)
         font = cv2.FONT_HERSHEY_DUPLEX
         cv2.putText(frame, name, (250, 400), font, 1.0, (0, 0, 0), 1)
+        return_name=name
 
-    return frame
+    return frame, return_name
