@@ -17,17 +17,26 @@
   </style>
   </head>
   <body>
-    <div class="pt-4" id="title">
-      <center>
-      Please enter your Personal Information
-      </center>
-    </div>
     <!-- If you want to add background color do it in section -->
 <section class="vh-100" >
     <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+      <form action="/action_page.php">
+      <div class="row d-flex justify-content-center align-items-center h-90">
         <div class="col-xl-9" id="form1">
-  
+          
+          <div class="py-3" id="title">
+            <p style="text-align:right">
+            <img src="static/logo_mandiri.jpg" alt="Logo" style="width:234px;height:50px;">
+            </p>
+          </div>
+          <center>
+          <h1>
+          SDB Registration Form
+          </h1>
+          <div class="py-3" id="title">
+              Please provide the following information to complete your registration
+          </div>
+        </center>
           <div class="card" style="border-radius: 15px;">
             <div class="card-body">
   
@@ -39,7 +48,7 @@
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="text" class="form-control form-control-lg" placeholder="John Doe" name="nama" required/>
+                  <input type="text" class="form-control form-control-lg" placeholder="Name" name="nama" required/>
   
                 </div>
               </div>
@@ -47,12 +56,12 @@
               <div class="row align-items-center py-3">
                 <div class="col-md-3 ps-5">
   
-                  <h6 class="mb-0">Nomor Rekening Nasabah</h6>
+                  <h6 class="mb-0">Nomor Rekening</h6>
   
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="number" class="form-control form-control-lg" placeholder="1300022998283" name="rekening" required/>
+                  <input type="number" class="form-control form-control-lg" placeholder="Account Number" name="rekening" required/>
   
                 </div>
               </div>
@@ -66,7 +75,7 @@
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="text" class="form-control form-control-lg" placeholder="Jl. Pribadi No. 1" name="alamat" required/>
+                  <input type="text" class="form-control form-control-lg" placeholder="Home Address" name="alamat" required/>
   
                 </div>
               </div>
@@ -75,12 +84,12 @@
               <div class="row align-items-center py-3">
                 <div class="col-md-3 ps-5">
   
-                  <h6 class="mb-0">Alamat Email Nasabah</h6>
+                  <h6 class="mb-0">Alamat Email</h6>
   
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="email" class="form-control form-control-lg" placeholder="example@example.com" name="email" required/>
+                  <input type="email" class="form-control form-control-lg" placeholder="Email" name="email" required/>
   
                 </div>
               </div>
@@ -94,7 +103,7 @@
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="number" class="form-control form-control-lg" placeholder="089620334313" name="nomor_hp" required/>
+                  <input type="number" class="form-control form-control-lg" placeholder="Mobile Phone" name="nomor_hp" required/>
   
                 </div>
               </div>
@@ -107,29 +116,61 @@
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="number" class="form-control form-control-lg" placeholder="3171030404020003" name="nik" required/>
+                  <input type="number" class="form-control form-control-lg" placeholder="NIK" name="nik" required/>
+  
+                </div>
+              </div>
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">SDB</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="number" class="form-control form-control-lg" placeholder="NIK" name="nik" required/>
   
                 </div>
               </div>
               <center>
-              <button type="button" class="btn btn-primary" id="next-button1">Next</button>
+              <button type="submit" class="btn btn-primary" id="next-button1">Next</button>
               </center>
               
             </div>
-          </div>
+          </div >
   
         </div>
+        <div class="row align-items-center py-3 hidden-form"id="picture">
+          <div>
+            <center>
+            <video id="video" autoplay></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+            </center>
+          </div>
+          <div>
+            <center>
+          <button id="capture-button" class="btn btn-primary btn-sm">Capture</button>
+            </center>
+          </div>
+        </div> 
         <div class="px-5 py-4 hidden-form" id="form2">
           <center>
-          <button type="submit" class="btn btn-primary btn-lg">Next</button>
+          <button type="button" class="btn btn-secondary btn-lg px-2"id="prev-button2">Previous</button>
+          <button type="button" class="btn btn-primary btn-lg px-2 hidden-form" id="next-button2">Next</button>
+          
+          <button type="submit" class="btn btn-primary btn-lg px-2 hidden-form"id="submit-button">Submit</button>
           </center>
         </div>
+        
         <div class="px-5 py-4 hidden-form" id="form3">
           <center>
-          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          <button type="button" class="btn btn-secondary btn-lg px-2"id="prev-button3">Previous</button>
+          <button type="button" class="btn btn-primary btn-lg px-2">Submit</button>
           </center>
         </div>
+
       </div>
+    </form>
     </div>
   </section>
 
@@ -137,32 +178,72 @@
     const title = document.getElementById('title');
     const form1 = document.getElementById('form1');
     const form2 = document.getElementById('form2');
-    const form3 = document.getElementById('form3');
     const nextButton1 = document.getElementById('next-button1');
     const prevButton2 = document.getElementById('prev-button2');
     const nextButton2 = document.getElementById('next-button2');
     const prevButton3 = document.getElementById('prev-button3');
+    const picture = document.getElementById('picture');
+    const submit = document.getElementById('submit-button');
     nextButton1.addEventListener('click', function() {
       form1.classList.add('hidden-form');
       title.classList.add('hidden-form');
+      picture.classList.remove('hidden-form');
       form2.classList.remove('hidden-form');
     });
 
     prevButton2.addEventListener('click', function() {
       form2.classList.add('hidden-form');
+      picture.classList.add('hidden-form');
       form1.classList.remove('hidden-form');
       title.classList.remove('hidden-form');
     });
 
     nextButton2.addEventListener('click', function() {
       form2.classList.add('hidden-form');
-      form3.classList.remove('hidden-form');
+      picture.classList.add('hidden-form');
   });
 
   prevButton3.addEventListener('click', function() {
-      form3.classList.add('hidden-form');
       form2.classList.remove('hidden-form');
+      picture.classList.remove('hidden-form');
   });
+  const video = document.getElementById('video');
+        const captureButton = document.getElementById('capture-button');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+            captureButton.addEventListener('click', function () {
+              context.drawImage(video, 0, 0, canvas.width, canvas.height);
+              const image = canvas.toDataURL('image/png');
+              submit.classList.remove('hidden-form');
+              // Create a JSON object with the 'image_data' field
+              const imageData = { image_data: image };
+          
+              // Send the JSON object to the server for storage
+              fetch('/capture', {
+                  method: 'POST',
+                  body: JSON.stringify(imageData),
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+              })
+              .then(response => response.text())
+              .then(data => {
+                  console.log(data);
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+          });
+          
   </script>
 </body>
 </html>

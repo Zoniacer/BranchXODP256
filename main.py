@@ -1,6 +1,11 @@
-from flask import Flask, Response,  redirect, url_for,render_template
+from flask import Flask, Response,  redirect, url_for,render_template,request
 import cv2
 import face_recognition_app
+import os
+import base64
+import json
+
+#TODO create data just using csv is fine for registration, sdb movie, and access
 
 app = Flask(__name__)
 
@@ -8,6 +13,39 @@ app.config['SERVER_NAME'] = '127.0.0.1:5000'  # Update with your specific server
 
 detection_complete = False
 client_name=''
+image_count = 0
+
+UPLOAD_FOLDER = 'temp'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/capture', methods=['POST'])
+def capture():
+    global image_count
+    image_count += 1
+
+    # Parse the JSON data
+    data = request.get_json()
+    image_data = data.get('image_data')
+
+    if image_data:
+            # Remove the data URI prefix
+            image_data = image_data.split(',')[1]
+
+            # Add padding to the Base64 string to make it valid
+            padding = '=' * (4 - (len(image_data) % 4))
+            image_data += padding
+
+            # Decode the base64-encoded image data
+            img_bytes = base64.b64decode(image_data)
+
+            # Save the image to a file
+            image_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'captured_image.png')
+            with open(image_filename, 'wb') as img_file:
+                img_file.write(img_bytes)
+
+            return 'Image captured and saved successfully'
+
+    return 'No image data received'
 
 def generate_frames():
     global detection_complete,client_name
