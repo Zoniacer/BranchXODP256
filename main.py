@@ -37,7 +37,6 @@ def video_feed():
 @app.route('/')
 def index():
     global detection_complete
-    print(10+detection_complete)
     if detection_complete:
         return render_template('redirect_page.html')
     return render_template('index.html',detectionComplete=detection_complete)
@@ -60,7 +59,9 @@ def check_detection():
     else:
         return "Detection not complete."
 
-
+@app.route('/registration')
+def registration():
+    return render_template('user_form.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

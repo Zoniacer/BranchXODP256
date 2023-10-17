@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Portal SDB</title>
+
+    <style>
+      .hidden-form {
+          display: none;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="pt-4" id="title">
+      <center>
+      Please enter your Personal Information
+      </center>
+    </div>
+    <!-- If you want to add background color do it in section -->
+<section class="vh-100" >
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-9" id="form1">
+  
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body">
+  
+              <div class="row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Nama Nasabah</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="text" class="form-control form-control-lg" placeholder="John Doe" name="nama" required/>
+  
+                </div>
+              </div>
+  
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Nomor Rekening Nasabah</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="number" class="form-control form-control-lg" placeholder="1300022998283" name="rekening" required/>
+  
+                </div>
+              </div>
+
+  
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Alamat Nasabah</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="text" class="form-control form-control-lg" placeholder="Jl. Pribadi No. 1" name="alamat" required/>
+  
+                </div>
+              </div>
+
+  
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Alamat Email Nasabah</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="email" class="form-control form-control-lg" placeholder="example@example.com" name="email" required/>
+  
+                </div>
+              </div>
+
+  
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Nomor Handphone Nasabah</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="number" class="form-control form-control-lg" placeholder="089620334313" name="nomor_hp" required/>
+  
+                </div>
+              </div>
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">NIK</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="number" class="form-control form-control-lg" placeholder="3171030404020003" name="nik" required/>
+  
+                </div>
+              </div>
+              <center>
+              <button type="button" class="btn btn-primary" id="next-button1">Next</button>
+              </center>
+              
+            </div>
+          </div>
+  
+        </div>
+        <div class="px-5 py-4 hidden-form" id="form2">
+          <center>
+          <button type="submit" class="btn btn-primary btn-lg">Next</button>
+          </center>
+        </div>
+        <div class="px-5 py-4 hidden-form" id="form3">
+          <center>
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const title = document.getElementById('title');
+    const form1 = document.getElementById('form1');
+    const form2 = document.getElementById('form2');
+    const form3 = document.getElementById('form3');
+    const nextButton1 = document.getElementById('next-button1');
+    const prevButton2 = document.getElementById('prev-button2');
+    const nextButton2 = document.getElementById('next-button2');
+    const prevButton3 = document.getElementById('prev-button3');
+    nextButton1.addEventListener('click', function() {
+      form1.classList.add('hidden-form');
+      title.classList.add('hidden-form');
+      form2.classList.remove('hidden-form');
+    });
+
+    prevButton2.addEventListener('click', function() {
+      form2.classList.add('hidden-form');
+      form1.classList.remove('hidden-form');
+      title.classList.remove('hidden-form');
+    });
+
+    nextButton2.addEventListener('click', function() {
+      form2.classList.add('hidden-form');
+      form3.classList.remove('hidden-form');
+  });
+
+  prevButton3.addEventListener('click', function() {
+      form3.classList.add('hidden-form');
+      form2.classList.remove('hidden-form');
+  });
+  </script>
+</body>
+</html>

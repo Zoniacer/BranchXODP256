@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example Page</title>
+</head>
+<body>
+    <form method="POST" action="/submit">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ name if condition else '' }}" required><br>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" value="{{ age if condition else '' }}" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

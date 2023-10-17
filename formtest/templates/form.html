@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Step Form</title>
+    <style>
+        .hidden-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1">
+        <h3>Step 1</h3>
+        <label for="field1">Field 1:</label>
+        <input type="text" id="field1" name="field1" required><br>
+
+        <button type="button" id="next-button1">Next</button>
+    </form>
+
+    <form id="form2" class="hidden-form">
+        <h3>Step 2</h3>
+        <label for="field2">Field 2:</label>
+        <input type="text" id="field2" name="field2" required><br>
+
+        <button type="button" id="prev-button2">Previous</button>
+        <button type="button" id="next-button2">Next</button>
+    </form>
+
+    <form id="form3" class="hidden-form">
+        <h3>Step 3</h3>
+        <label for="field3">Field 3:</label>
+        <input type="text" id="field3" name="field3" required><br>
+
+        <button type="button" id="prev-button3">Previous</button>
+        <button type="submit" id="submit-button">Submit</button>
+    </form>
+
+    <script>
+        const form1 = document.getElementById('form1');
+        const form2 = document.getElementById('form2');
+        const form3 = document.getElementById('form3');
+        const nextButton1 = document.getElementById('next-button1');
+        const prevButton2 = document.getElementById('prev-button2');
+        const nextButton2 = document.getElementById('next-button2');
+        const prevButton3 = document.getElementById('prev-button3');
+
+        nextButton1.addEventListener('click', function() {
+            form1.classList.add('hidden-form');
+            form2.classList.remove('hidden-form');
+        });
+
+        prevButton2.addEventListener('click', function() {
+            form2.classList.add('hidden-form');
+            form1.classList.remove('hidden-form');
+        });
+
+        nextButton2.addEventListener('click', function() {
+            form2.classList.add('hidden-form');
+            form3.classList.remove('hidden-form');
+        });
+
+        prevButton3.addEventListener('click', function() {
+            form3.classList.add('hidden-form');
+            form2.classList.remove('hidden-form');
+        });
+    </script>
+</body>
+</html>
