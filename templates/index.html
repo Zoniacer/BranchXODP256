@@ -25,6 +25,9 @@
     overflow: hidden;
     text-align: center;
     }
+    .hidden-form {
+      display: none;
+      }
     </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -38,7 +41,16 @@
                 <img src="/video_feed" />
             {% endif %}
         </div>
-        <a href="/exit_video_feed">Next</a>
+        <a href="/exit_video_feed" class="btn btn-primary" id="next">Next</a>
         </center></p>
+
+        <script>
+          
+    const nextButton1 = document.getElementById('next');
+    
+    {% if detectionComplete %}
+    nextButton1.classList.remove('hidden-form');
+    {% endif %}
+        </script>
 </body>
 </html>
